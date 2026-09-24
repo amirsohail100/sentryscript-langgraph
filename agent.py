@@ -1,6 +1,6 @@
 from langgraph.graph import StateGraph, START, END
 
-from state.AnalyzerState import AnalyzerState
+from state.StatePipeline import AnalyzerState
 from tools.nodes import toxicity_node, copyright_node, culture_node
 
 builder = StateGraph(AnalyzerState)
