@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>SentryScript</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link href="https://fonts.googleapis.com/css2?family=IBM+Plex+Mono:wght@500;600&family=IBM+Plex+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <main class="dashboard">
+    <header class="dash-head">
+      <span class="tag">SAFETY SCAN</span>
+      <h1>Scan a script for hidden risk.</h1>
+    </header>
+
+    <section class="feed">
+      <label for="rawText">Text to scan</label>
+      <textarea id="rawText" rows="5" placeholder="Apna script ya text yahan paste karo..."></textarea>
+      <button id="scanBtn">
+        <span class="dot"></span>
+        <span id="scanBtnLabel">Run scan</span>
+      </button>
+      <p id="errorMsg" class="error" role="alert"></p>
+    </section>
+
+    <section class="gauges">
+      <article class="gauge-card" data-metric="toxicity">
+        <div class="gauge-wrap">
+          <svg viewBox="0 0 120 120" class="gauge">
+            <circle class="track" cx="60" cy="60" r="52"></circle>
+            <circle class="arc" cx="60" cy="60" r="52"></circle>
+          </svg>
+          <div class="gauge-score">--</div>
+        </div>
+        <h2>Toxicity &amp; Hate</h2>
+        <p class="gauge-status">Not scanned yet</p>
+      </article>
+
+      <article class="gauge-card" data-metric="copyright">
+        <div class="gauge-wrap">
+          <svg viewBox="0 0 120 120" class="gauge">
+            <circle class="track" cx="60" cy="60" r="52"></circle>
+            <circle class="arc" cx="60" cy="60" r="52"></circle>
+          </svg>
+          <div class="gauge-score">--</div>
+        </div>
+        <h2>Copyright Risk</h2>
+        <p class="gauge-status">Not scanned yet</p>
+      </article>
+
+      <article class="gauge-card" data-metric="culture">
+        <div class="gauge-wrap">
+          <svg viewBox="0 0 120 120" class="gauge">
+            <circle class="track" cx="60" cy="60" r="52"></circle>
+            <circle class="arc" cx="60" cy="60" r="52"></circle>
+          </svg>
+          <div class="gauge-score">--</div>
+        </div>
+        <h2>Cultural Sensitivity</h2>
+        <p class="gauge-status">Not scanned yet</p>
+      </article>
+    </section>
+
+    <p class="verdict" id="verdict"></p>
+  </main>
+
+  <script src="script.js"></script>
+</body>
+</html>
