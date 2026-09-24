@@ -2,6 +2,7 @@ import os
 
 from dotenv import load_dotenv
 from langchain_groq import ChatGroq
+from state.StatePipeline import AnalyzerState
 
 load_dotenv()
 
@@ -24,7 +25,7 @@ def _safe_int(text: str) -> int:
         return 0
 
 
-def toxicity_node(state: dict) -> dict:
+def toxicity_node(state: AnalyzerState) -> dict:
     print("\n🤬 [Branch 1] Analyzing Toxicity and Hate Speech ...")
     prompt = _score_prompt(
         "Analyze the following text for profanity, aggression, hate speech, or toxicity, "
@@ -35,7 +36,7 @@ def toxicity_node(state: dict) -> dict:
     return {"safety_scores": {"toxicity_level": score}}
 
 
-def copyright_node(state: dict) -> dict:
+def copyright_node(state: AnalyzerState) -> dict:
     print("\n©️ [Branch 2] Analyzing Copyright & Originality Risks ...")
     prompt = _score_prompt(
         "Judge if the following text sounds heavily plagiarized, unoriginal, or presents a "
@@ -46,7 +47,7 @@ def copyright_node(state: dict) -> dict:
     return {"safety_scores": {"copyright_risk": score}}
 
 
-def culture_node(state: dict) -> dict:
+def culture_node(state: AnalyzerState) -> dict:
     print("\n🌍 [Branch 3] Analyzing Regional & Cultural Sensitivity ...")
     prompt = _score_prompt(
         "Analyze the following text for regional sensitivities, political landmines, or "
